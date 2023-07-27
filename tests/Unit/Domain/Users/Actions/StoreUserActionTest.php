@@ -13,22 +13,26 @@ use Tests\TestCase;
 class StoreUserActionTest extends TestCase
 {
     use RefreshDatabase;
+
     public function test_it_store_a_new_user_on_database(): void
     {
-        $data = User::factory()->make();
+        /**
+         * @var User $user
+         */
+        $user = User::factory()->make();
 
         (new StoreUserAction())->execute(StoreUserData::fromArray([
-            'name' => $data->name,
-            'last_name' => $data->last_name,
-            'email' => $data->email,
+            'name' => $user->name,
+            'last_name' => $user->last_name,
+            'email' => $user->email,
             'password' => 'password'
         ]));
 
         $this->assertDatabaseCount(table: 'users', count: 1);
         $this->assertDatabaseHas(table: 'users', data: [
-            'name' => $data->name,
-            'last_name' => $data->last_name,
-            'email' => $data->email
+            'name' => $user->name,
+            'last_name' => $user->last_name,
+            'email' => $user->email
         ]);
     }
 }

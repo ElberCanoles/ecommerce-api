@@ -11,6 +11,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
+ * @property int $id
+ * @property string $name
+ * @property string $last_name
+ * @property string $email
+ *
  * @method static UserQueryBuilder query()
  */
 class User extends Authenticatable

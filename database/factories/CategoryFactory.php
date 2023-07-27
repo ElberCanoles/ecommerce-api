@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Domain\Categories\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Category>
@@ -15,7 +16,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->text(maxNbChars: 30),
+            'name' => Str::ucfirst(Str::lower(fake()->unique()->text(maxNbChars: 30))),
         ];
     }
 }
