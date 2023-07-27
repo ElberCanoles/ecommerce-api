@@ -9,13 +9,13 @@ use App\Domain\Users\Models\User;
 
 class StoreUserAction
 {
-    public function execute(StoreUserData $data): User
+    public function execute(StoreUserData $storeUserData): User
     {
         return User::query()->create([
-            'name' => $data->name,
-            'last_name' => $data->lastName,
-            'email' => $data->email,
-            'password' => $data->password
+            'name' => $storeUserData->name,
+            'last_name' => $storeUserData->lastName,
+            'email' => $storeUserData->email,
+            'password' => $storeUserData->password
         ]);
     }
 }

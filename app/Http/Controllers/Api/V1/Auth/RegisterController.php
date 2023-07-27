@@ -13,10 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RegisterController extends Controller
 {
-
     public function __invoke(StoreRequest $request, StoreUserAction $storeUserAction): JsonResponse
     {
         $storeUserAction->execute(StoreUserData::fromRequest($request));
-        return response()->json(data: [], status: Response::HTTP_CREATED);
+        return response()->json(data: ['message' => trans(key: 'responses.record_created')], status: Response::HTTP_CREATED);
     }
 }

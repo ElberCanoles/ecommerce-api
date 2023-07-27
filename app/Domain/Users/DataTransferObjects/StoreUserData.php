@@ -15,8 +15,7 @@ class StoreUserData
         public string $lastName,
         public string $email,
         public string $password
-    )
-    {
+    ) {
     }
 
     public static function fromRequest(FormRequest $request): self
