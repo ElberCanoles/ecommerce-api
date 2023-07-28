@@ -38,8 +38,8 @@ class FileService
 
         foreach ($files as $file) {
             if (is_a(object_or_class: $file, class: UploadedFile::class)) {
-                if ($fullFilePath = $this->uploadSingleFile(file: $file, relativePath: $relativePath)) {
-                    $response[] = $fullFilePath;
+                if ($fileUrl = $this->uploadSingleFile(file: $file, relativePath: $relativePath)) {
+                    $response[] = $fileUrl;
                 }
             }
         }
@@ -56,10 +56,10 @@ class FileService
         }
     }
 
-    public function removeMultipleFiles(array $fullPaths, $fromThePrefix): void
+    public function removeMultipleFiles(array $filesUrl, $fromThePrefix): void
     {
-        foreach ($fullPaths as $fullPath) {
-            $this->removeSingleFile($fullPath, $fromThePrefix);
+        foreach ($filesUrl as $fileUrl) {
+            $this->removeSingleFile($fileUrl, $fromThePrefix);
         }
     }
 
