@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @method static Category create(array $attributes = [])
+ * @method static Category|null first()
  * @method static Category|null find($id, $columns = ['*'])
  */
 class CategoryQueryBuilder extends Builder

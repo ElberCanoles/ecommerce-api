@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\Auth\RegisterController;
 use App\Http\Controllers\Api\V1\Category\CategoryCrudController;
+use App\Http\Controllers\Api\V1\Product\ProductCrudController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('api.v1.')->group(function () {
@@ -18,6 +19,7 @@ Route::name('api.v1.')->group(function () {
             });
 
             Route::apiResource('categories', CategoryCrudController::class);
+            Route::apiResource('products', ProductCrudController::class);
         });
 
     });
