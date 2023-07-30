@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Domain\Products\Factories;
 
+use App\Domain\Products\Enums\ProductFileStorageDirectories;
 use App\Domain\Products\Models\Product;
 use App\Domain\Shared\Services\FileService;
 use Exception;
 
 class ProductStoreImagesFactory
 {
-    public const PRODUCTS_GALLERY_PATH = 'images/products';
 
     public function __construct(private readonly FileService $fileService)
     {
@@ -21,7 +21,7 @@ class ProductStoreImagesFactory
         try {
             $newImagesPaths = $this->fileService->uploadMultipleFiles(
                 files: $images,
-                relativePath: self::PRODUCTS_GALLERY_PATH
+                relativePath: ProductFileStorageDirectories::PRODUCTS_GALLERY_PATH->value
             );
 
             foreach ($newImagesPaths as $imagePath) {
