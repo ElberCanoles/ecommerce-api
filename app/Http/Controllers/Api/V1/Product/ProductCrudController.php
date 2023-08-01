@@ -40,8 +40,14 @@ class ProductCrudController extends Controller
         return response()->json(data: ['message' => trans(key: 'responses.record_created')], status: Response::HTTP_CREATED);
     }
 
-    public function show(Product $product): ProductResource
+    public function show(string|int $id): ProductResource
     {
+        $product = QueryBuilder::for(subject: Product::class)
+            ->allowedIncludes(includes: ['category', 'images'])
+            ->where(column: 'id', operator: '=', value: $id)
+            ->select(columns: ['id', 'category_id', 'name', 'price', 'stock', 'status', 'description', 'created_at', 'updated_at'])
+            ->firstOrFail();
+
         return ProductResource::make($product);
     }
 

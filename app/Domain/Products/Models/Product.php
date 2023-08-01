@@ -2,12 +2,14 @@
 
 namespace App\Domain\Products\Models;
 
+use App\Domain\Categories\Models\Category;
 use App\Domain\Images\Models\Image;
 use App\Domain\Products\QueryBuilders\ProductQueryBuilder;
 use Carbon\Carbon;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -58,5 +60,10 @@ class Product extends Model
     public function images(): MorphMany|Builder
     {
         return $this->morphMany(related: Image::class, name: 'imageable');
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(related: Category::class);
     }
 }
