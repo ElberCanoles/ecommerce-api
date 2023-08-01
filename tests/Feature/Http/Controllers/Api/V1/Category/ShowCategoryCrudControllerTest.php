@@ -33,7 +33,9 @@ class ShowCategoryCrudControllerTest extends TestCase
             ->assertJson(function (AssertableJson $json) {
                 $json->has('data', function (AssertableJson $data) {
                     $data->has('id')
-                        ->has('name');
+                        ->has('name')
+                        ->has('created_at')
+                        ->has('updated_at');
                 });
             });
     }

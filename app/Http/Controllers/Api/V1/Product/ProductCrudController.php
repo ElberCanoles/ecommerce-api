@@ -26,8 +26,8 @@ class ProductCrudController extends Controller
     {
         $products = QueryBuilder::for(subject: Product::class)
             ->allowedFilters(filters: ['name', 'price', 'stock', 'status'])
-            ->with(relations: ['images'])
-            ->select(columns: ['id', 'name', 'price', 'stock', 'status', 'description', 'created_at'])
+            ->allowedIncludes(includes: ['category', 'images'])
+            ->select(columns: ['id', 'category_id', 'name', 'price', 'stock', 'status', 'description', 'created_at', 'updated_at'])
             ->latest()
             ->paginate(perPage: Paginator::LENGTH_PER_PAGE->value);
 

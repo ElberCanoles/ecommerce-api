@@ -35,12 +35,14 @@ class ShowProductCrudControllerTest extends TestCase
             ->assertJson(function (AssertableJson $json) {
                 $json->has('data', function (AssertableJson $data) {
                     $data->has('id')
+                        ->has('category_id')
                         ->has('name')
                         ->has('price')
                         ->has('stock')
                         ->has('status_key')
                         ->has('description')
-                        ->has('images');
+                        ->has('created_at')
+                        ->has('updated_at');
                 });
             });
     }

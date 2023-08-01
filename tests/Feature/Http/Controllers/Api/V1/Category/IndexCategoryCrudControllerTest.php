@@ -32,7 +32,9 @@ class IndexCategoryCrudControllerTest extends TestCase
             ->assertJson(function (AssertableJson $json) {
                 $json->count(key: 'data', length: 5)->has('data.0', function (AssertableJson $data) {
                     $data->has('id')
-                        ->has('name');
+                        ->has('name')
+                        ->has('created_at')
+                        ->has('updated_at');
                 })->etc();
             })
             ->assertJsonStructure([

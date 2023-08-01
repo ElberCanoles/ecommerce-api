@@ -3,6 +3,7 @@
 namespace App\Domain\Categories\Models;
 
 use App\Domain\Categories\QueryBuilders\CategoryQueryBuilder;
+use Carbon\Carbon;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property int $id
  * @property string $name
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  *
  * @method static CategoryQueryBuilder query()
  */
