@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Controllers\Api\V1\Product;
+namespace Tests\Feature\Http\Controllers\Api\V1\Product;
 
 use App\Domain\Categories\Models\Category;
 use App\Domain\Products\Models\Product;
